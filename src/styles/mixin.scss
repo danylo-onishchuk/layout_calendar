@@ -11,6 +11,6 @@
 
 @mixin hover_style {
   background-color: #ffbfcb;
-  transform: translate(0, -20px);
   cursor: pointer;
+  transform: translate(0, -20px);
 }
