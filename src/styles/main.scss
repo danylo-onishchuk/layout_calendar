@@ -1,3 +1,37 @@
-body {
-  margin: 0;
+@import "_reset";
+@import "mixin";
+@import "variables";
+
+html {
+  font-family: $font_family;
+  font-size: $font_size;
+}
+
+.calendar {
+  width: $size * 7 + $square_margin * 6;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+@for $i from 1 through 31 {
+  .calendar-#{$i} {
+    @for $j from 1 through $i {
+      & :nth-child(#{$j}) {
+        @include square_style;
+      }
+      & :hover {
+        @include hover_style;
+      }
+      & :nth-child(#{$j})::after {
+        content: "#{$j}";
+      }
+    }
+  }
+}
+
+@each $day, $margiin in $days {
+  .calendar-#{$day} :first-child {
+    margin-left: ($size) * $margiin;
+  }
 }

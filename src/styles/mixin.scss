@@ -1,0 +1,16 @@
+@mixin square_style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  border: 1px solid;
+  background-color: #eee;
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+@mixin hover_style {
+  background-color: #ffbfcb;
+  transform: translate(0, -20px);
+  cursor: pointer;
+}
