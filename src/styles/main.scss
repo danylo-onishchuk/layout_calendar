@@ -8,22 +8,31 @@ html {
 }
 
 .calendar {
-  width: $size * 7 + $square_margin * 6;
+  width: ($size + $square_margin) * 8;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+div > div {
+  @include square_style;
+}
+
+div > div:hover {
+  @include hover_style;
 }
 
 @for $i from 1 through 31 {
   .calendar-#{$i} {
     @for $j from 1 through $i {
-      & :nth-child(#{$j}) {
-        @include square_style;
+
+      div:nth-child(#{$j}) {
+        display: flex;
       }
-      & :hover {
-        @include hover_style;
-      }
-      & :nth-child(#{$j})::after {
+
+      div:nth-child(#{$j})::after {
         content: "#{$j}";
       }
     }
@@ -32,6 +41,6 @@ html {
 
 @each $day, $margiin in $days {
   .calendar-#{$day} :first-child {
-    margin-left: ($size) * $margiin;
+    margin-left: (($size) * $margiin + ($square_margin * 3 * $margiin));
   }
 }
